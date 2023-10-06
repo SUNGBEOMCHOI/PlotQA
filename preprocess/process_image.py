@@ -111,10 +111,10 @@ class ImageTranslator:
         self.img.show()
 
 if __name__ == "__main__":
-    source_folder = "../data/test/png"
-    target_root_folder = "../data/translated_test/png"
-    source_annotation_file = "../data/test/annotations.json"
-    target_annotation_file = "../data/translated_test/annotations.json"
+    source_folder = "../data/val/png"
+    target_root_folder = "../data/translated_val/png"
+    source_annotation_file = "../data/val/annotations.json"
+    target_annotation_file = "../data/translated_val/annotations.json"
     font_path = "./font/휴먼명조.ttf"
 
     os.makedirs(target_root_folder, exist_ok=True)
