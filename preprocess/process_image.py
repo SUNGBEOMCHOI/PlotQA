@@ -129,6 +129,7 @@ if __name__ == "__main__":
     with open(target_annotation_file, "w") as out_file:
         out_file.write("[\n")
         with tqdm.tqdm(zip(image_list, datas), total=len(image_list)) as pbar:
+            idx = 0
             for image_path, data in pbar:
                 try:
                     translator = ImageTranslator(os.path.join(source_folder, image_path), data, font_path)
@@ -136,8 +137,12 @@ if __name__ == "__main__":
                     translator.save_image(os.path.join(target_root_folder, image_path))
                     
                     json.dump(data, out_file, ensure_ascii=False, indent=4)
-                    out_file.write(",\n")
+                    if idx < len(image_list) - 1:
+                        out_file.write(",\n")
+                    else:
+                        out_file.write("\n")
+                    idx += 1
                 except:
                     print(f"Error encountered while processing {image_path}")
-        out_file.write("\n]")
+        out_file.write("]")
 
